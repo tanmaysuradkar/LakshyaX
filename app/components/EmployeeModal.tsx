@@ -34,20 +34,19 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
 
   useEffect(() => {
     if (employee) {
-      // Ensure all required fields are present and not undefined
-      setFormData({
-        id: employee.id || Date.now(),
-        name: employee.name || '',
-        email: employee.email || '',
-        role: employee.role || '',
-        department: employee.department || '',
-        status: employee.status || 'Active',
-        avatar: employee.avatar || `https://ui-avatars.com/api/?name=${employee.name || ''}`
-      });
-    } else {
       setFormData(initialFormData);
+    } else {
+      setFormData({
+        id: Date.now(),
+        name: '',
+        email: '',
+        role: '',
+        department: '',
+        status: 'Active',
+        avatar: undefined
+      });
     }
-  }, [employee, isOpen]);
+  }, [employee, initialFormData]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
