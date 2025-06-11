@@ -219,7 +219,7 @@ export default function MessagePage() {
         timestamp: new Date(),
         status: 'sent',
         reactions: {},
-        replyTo: replyTo,
+        replyTo: replyTo || undefined,
         attachments: selectedFile ? [{
           type: selectedFile.type.startsWith('image/') ? 'image' : 'file',
           url: URL.createObjectURL(selectedFile),
