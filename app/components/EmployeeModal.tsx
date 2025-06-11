@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 interface Employee {
   id: number;
@@ -20,7 +20,7 @@ interface EmployeeModalProps {
 }
 
 export default function EmployeeModal({ isOpen, onClose, onSave, employee }: EmployeeModalProps) {
-  const initialFormData: Employee = {
+  const initialFormData = useMemo(() => ({
     id: employee?.id || Date.now(),
     name: employee?.name || '',
     email: employee?.email || '',
@@ -28,7 +28,7 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
     department: employee?.department || '',
     status: employee?.status || 'Active',
     avatar: employee?.avatar
-  };
+  }), [employee]);
 
   const [formData, setFormData] = useState<Employee>(initialFormData);
 
