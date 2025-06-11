@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
+type TaskPriority = 'High' | 'Medium' | 'Low';
+
 const sidebarSections = [
   { key: 'dashboard', label: 'Dashboard', path: '/Dashboard', icon: (
     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,7 +110,7 @@ export default function TasksPage() {
     return matchesSearch && matchesStatus && matchesPriority;
   });
 
-  const getPriorityColor = (priority) => {
+  const getPriorityColor = (priority: TaskPriority) => {
     switch (priority) {
       case 'High': return 'bg-red-100 text-red-700';
       case 'Medium': return 'bg-yellow-100 text-yellow-700';
