@@ -515,11 +515,11 @@ export default function MessagePage() {
                               {attachment.type === 'image' ? (
                                 <div className="relative w-full h-48">
                                   <Image
-                                    src={attachment.url}
-                                    alt={attachment.name}
+                                  src={attachment.url}
+                                  alt={attachment.name}
                                     fill
                                     className="object-cover rounded-lg"
-                                  />
+                                />
                                 </div>
                               ) : (
                                 <a
