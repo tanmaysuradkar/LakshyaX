@@ -58,7 +58,7 @@ interface ProfileData {
 
 interface Activity {
   id: number;
-  type: 'project' | 'task' | 'team';
+  type: 'project' | 'task' | 'team' | 'profile' | 'settings';
   title: string;
   timestamp: Date;
   icon: string;
@@ -163,6 +163,16 @@ export default function ProfilePage() {
       ...prev,
       [setting]: !prev[setting]
     }));
+
+    // Add new activity for setting change
+    setActivities(prev => [{
+      id: prev.length + 1,
+      type: 'settings',
+      title: `Updated ${setting.replace(/([A-Z])/g, ' $1').toLowerCase()} setting`,
+      timestamp: new Date(),
+      icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z',
+      color: 'purple'
+    }, ...prev]);
   };
 
   const handleProfileUpdate = (e: React.FormEvent<HTMLFormElement>) => {
@@ -178,6 +188,14 @@ export default function ProfilePage() {
     };
     setProfileData(updatedProfile);
     setIsEditing(false);
+    setActivities(prev => [{
+      id: prev.length + 1,
+      type: 'profile',
+      title: 'Updated profile information',
+      timestamp: new Date(),
+      icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+      color: 'blue'
+    }, ...prev]);
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {

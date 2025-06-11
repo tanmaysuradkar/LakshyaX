@@ -33,7 +33,7 @@ export default function CompanySignup() {
       
       // For now, we'll just redirect to the dashboard
       router.push('/Dashboard');
-    } catch (err) {
+    } catch {
       setError('Failed to create account. Please try again.');
     }
   };

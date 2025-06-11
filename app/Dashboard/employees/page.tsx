@@ -5,6 +5,19 @@ import EmployeeList from '../../components/EmployeeList';
 import { useState } from 'react';
 import EmployeeModal from '../../components/EmployeeModal';
 
+interface Employee {
+  id: string;
+  name: string;
+  role: string;
+  department: string;
+  status: 'Active' | 'On Leave' | 'Remote';
+  email: string;
+  phone?: string;
+  location?: string;
+  joinDate: string;
+  avatar?: string;
+}
+
 export default function EmployeesPage() {
   const router = useRouter();
   const pathname = usePathname();
@@ -13,7 +26,7 @@ export default function EmployeesPage() {
   const [statusFilter, setStatusFilter] = useState('');
   const [sortBy, setSortBy] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedEmployee, setSelectedEmployee] = useState<any>(null);
+  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
 
   const handleNavigation = (path: string) => {
     router.push(path);
@@ -24,7 +37,7 @@ export default function EmployeesPage() {
     setIsModalOpen(true);
   };
 
-  const handleEditEmployee = (employee: any) => {
+  const handleEditEmployee = (employee: Employee) => {
     setSelectedEmployee(employee);
     setIsModalOpen(true);
   };
@@ -34,7 +47,7 @@ export default function EmployeesPage() {
     setSelectedEmployee(null);
   };
 
-  const handleSaveEmployee = (employeeData: any) => {
+  const handleSaveEmployee = (employeeData: Employee) => {
     // Here you would typically make an API call to save the employee
     console.log('Saving employee:', employeeData);
     handleCloseModal();

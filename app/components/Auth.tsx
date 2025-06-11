@@ -1,19 +1,19 @@
 'use client';
 import Link from 'next/link';
 import { redirect, usePathname } from 'next/navigation';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signOut } from "next-auth/react"
 import { useEffect } from 'react';
 
 export default function Component() {
   const pathname = usePathname();
-  const { data: session } = useSession()
- if(pathname === '/signup'){
+  const { data: session } = useSession();
+
   useEffect(() => {
-    if (session?.user) {
+    if (pathname === '/signup' && session?.user) {
       redirect("/");
     }
   }, [session, pathname]);
- }
+
   if (session?.user) {
     return (
       <div className=' text-black'>
@@ -23,7 +23,8 @@ export default function Component() {
           className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">Sign out</Link></button>
       </div>
     )
-  } return (
+  }
+  return (
     // <div>
     //   Not signed in 
     //   <br/>

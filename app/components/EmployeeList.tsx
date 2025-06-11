@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import EmployeeModal from './EmployeeModal';
 
 interface Employee {
@@ -152,11 +153,13 @@ export default function EmployeeList({
                 <tr key={index} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="h-10 w-10 flex-shrink-0">
-                        <img
-                          className="h-10 w-10 rounded-full"
+                      <div className="h-10 w-10 flex-shrink-0 relative">
+                        <Image
+                          className="rounded-full"
                           src={employee.avatar}
                           alt={employee.name}
+                          fill
+                          sizes="40px"
                         />
                       </div>
                       <div className="ml-4">

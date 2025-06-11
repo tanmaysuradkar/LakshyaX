@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 const sidebarSections = [
   { key: 'dashboard', label: 'Dashboard', path: '/Dashboard', icon: (
@@ -153,7 +154,6 @@ export default function MessagePage() {
   const pathname = usePathname();
   const [selectedChat, setSelectedChat] = useState(1);
   const [message, setMessage] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
   const [editingMessageId, setEditingMessageId] = useState<number | null>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [forwardingMessage, setForwardingMessage] = useState<Message | null>(null);
@@ -161,7 +161,6 @@ export default function MessagePage() {
   const [replyTo, setReplyTo] = useState<number | null>(null);
   const [showProfileSearch, setShowProfileSearch] = useState(false);
   const [profileSearchQuery, setProfileSearchQuery] = useState('');
-  const [selectedProfile, setSelectedProfile] = useState<UserProfile | null>(null);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -183,12 +182,6 @@ export default function MessagePage() {
     }
   ]);
 
-  const filteredProfiles = userProfiles.filter(profile =>
-    profile.name.toLowerCase().includes(profileSearchQuery.toLowerCase()) ||
-    profile.role.toLowerCase().includes(profileSearchQuery.toLowerCase()) ||
-    profile.department.toLowerCase().includes(profileSearchQuery.toLowerCase())
-  );
-
   const handleStartChat = (profile: UserProfile) => {
     // Add the user to conversations if not already present
     if (!conversations.find(c => c.id === profile.id)) {
@@ -202,7 +195,7 @@ export default function MessagePage() {
         isOnline: profile.isOnline
       };
       // This is a simulation. In a real app, you would add to a global state or fetch from backend
-      conversations.push(newConversation as any); // Temporarily cast to any for quick demo
+      conversations.push(newConversation);
     }
     setSelectedChat(profile.id);
     setShowProfileSearch(false);
@@ -316,6 +309,7 @@ export default function MessagePage() {
       };
       setMessages(prev => [...prev, newMessage]);
       setForwardingMessage(null);
+      setSelectedChat(targetChatId); // Switch to the target chat
     }
   };
 
@@ -519,11 +513,14 @@ export default function MessagePage() {
                           {msg.attachments?.map((attachment, index) => (
                             <div key={index} className="mt-2">
                               {attachment.type === 'image' ? (
-                                <img
-                                  src={attachment.url}
-                                  alt={attachment.name}
-                                  className="max-w-full rounded-lg"
-                                />
+                                <div className="relative w-full h-48">
+                                  <Image
+                                    src={attachment.url}
+                                    alt={attachment.name}
+                                    fill
+                                    className="object-cover rounded-lg"
+                                  />
+                                </div>
                               ) : (
                                 <a
                                   href={attachment.url}
@@ -748,7 +745,7 @@ export default function MessagePage() {
 
             <div className="overflow-y-auto flex-1">
               <div className="grid grid-cols-1 gap-4">
-                {filteredProfiles.map(profile => (
+                {userProfiles.map(profile => (
                   <div
                     key={profile.id}
                     className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer"

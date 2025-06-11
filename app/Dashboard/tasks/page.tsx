@@ -181,7 +181,7 @@ export default function TasksPage() {
           <div className="flex justify-between items-center mb-8">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Tasks</h1>
-              <p className="text-gray-600 mt-1">Manage and track your team's tasks</p>
+              <p className="text-gray-600 mt-1">Manage and track your team&apos;s tasks</p>
             </div>
             <button 
               onClick={() => setIsCreateModalOpen(true)}

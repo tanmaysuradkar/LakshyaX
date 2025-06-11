@@ -66,7 +66,7 @@ export default function Pricing() {
               Simple, transparent pricing
             </h1>
             <p className="mt-5 max-w-xl mx-auto text-xl text-gray-500">
-              Choose the perfect plan for your team's needs
+              Choose the perfect plan for your team&apos;s needs
             </p>
           </div>
         </div>

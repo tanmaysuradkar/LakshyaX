@@ -1,7 +1,6 @@
 'use client';
 import Navbar from '../components/Navbar';
-import Link from 'next/link';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn } from "next-auth/react"
 export default function SignUp() {
   const { data: session } = useSession()
   console.log(session);

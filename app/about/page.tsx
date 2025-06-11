@@ -12,7 +12,7 @@ export default function About() {
             <section>
               <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
               <p className="text-gray-600">
-                At LakshyaX, we're dedicated to revolutionizing remote team management by providing 
+                At LakshyaX, we&apos;re dedicated to revolutionizing remote team management by providing 
                 innovative solutions that empower businesses to thrive in the digital age. Our mission 
                 is to make remote work seamless, efficient, and productive for companies of all sizes.
               </p>
@@ -37,7 +37,7 @@ export default function About() {
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-md">
                   <h3 className="text-xl font-semibold mb-2">Customer Focus</h3>
-                  <p className="text-gray-600">Putting our customers' needs at the heart of everything we do.</p>
+                  <p className="text-gray-600">Putting our customers&apos; needs at the heart of everything we do.</p>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-md">
                   <h3 className="text-xl font-semibold mb-2">Excellence</h3>
