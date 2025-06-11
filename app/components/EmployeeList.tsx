@@ -19,15 +19,13 @@ interface EmployeeListProps {
   departmentFilter?: string;
   statusFilter?: string;
   sortBy?: string;
-  onEditEmployee?: (employee: Employee) => void;
 }
 
 export default function EmployeeList({ 
   searchTerm = '', 
   departmentFilter = '', 
   statusFilter = '',
-  sortBy = '',
-  onEditEmployee
+  sortBy = ''
 }: EmployeeListProps) {
   const [employees, setEmployees] = useState<Employee[]>([
     {
