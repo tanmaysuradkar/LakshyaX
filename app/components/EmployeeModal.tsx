@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 
 interface Employee {
-  id?: string;
+  id: number;
   name: string;
   email: string;
   role: string;
@@ -11,15 +11,6 @@ interface Employee {
   status: 'Active' | 'Remote' | 'On Leave';
   avatar?: string;
 }
-
-const initialFormData: Employee = {
-  name: '',
-  email: '',
-  role: '',
-  department: '',
-  status: 'Active',
-  avatar: 'https://ui-avatars.com/api/?name='
-};
 
 interface EmployeeModalProps {
   isOpen: boolean;
@@ -29,13 +20,23 @@ interface EmployeeModalProps {
 }
 
 export default function EmployeeModal({ isOpen, onClose, onSave, employee }: EmployeeModalProps) {
+  const initialFormData: Employee = {
+    id: employee?.id || Date.now(),
+    name: employee?.name || '',
+    email: employee?.email || '',
+    role: employee?.role || '',
+    department: employee?.department || '',
+    status: employee?.status || 'Active',
+    avatar: employee?.avatar
+  };
+
   const [formData, setFormData] = useState<Employee>(initialFormData);
 
   useEffect(() => {
     if (employee) {
       // Ensure all required fields are present and not undefined
       setFormData({
-        id: employee.id || '',
+        id: employee.id || Date.now(),
         name: employee.name || '',
         email: employee.email || '',
         role: employee.role || '',
@@ -48,19 +49,20 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
     }
   }, [employee, isOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Ensure all required fields are present before saving
+    const formData = new FormData(e.currentTarget);
     const employeeData: Employee = {
-      ...formData,
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      role: formData.role.trim(),
-      department: formData.department.trim(),
-      status: formData.status.trim(),
-      avatar: formData.avatar || `https://ui-avatars.com/api/?name=${formData.name.trim()}`
+      id: employee?.id || Date.now(),
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      role: formData.get('role') as string,
+      department: formData.get('department') as string,
+      status: formData.get('status') as 'Active' | 'Remote' | 'On Leave',
+      avatar: formData.get('avatar') as string || undefined
     };
     onSave(employeeData);
+    onClose();
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {

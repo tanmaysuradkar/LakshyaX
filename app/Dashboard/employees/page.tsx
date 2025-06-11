@@ -4,19 +4,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import EmployeeList from '../../components/EmployeeList';
 import { useState } from 'react';
 import EmployeeModal from '../../components/EmployeeModal';
-
-interface Employee {
-  id?: string;
-  name: string;
-  role: string;
-  department: string;
-  status: 'Active' | 'On Leave' | 'Remote';
-  email: string;
-  phone?: string;
-  location?: string;
-  joinDate?: string;
-  avatar?: string;
-}
+import { Employee } from '@/app/types/employee';
 
 export default function EmployeesPage() {
   const router = useRouter();
@@ -26,6 +14,7 @@ export default function EmployeesPage() {
   const [statusFilter, setStatusFilter] = useState('');
   const [sortBy, setSortBy] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [employees, setEmployees] = useState<Employee[]>([]);
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
 
   const handleNavigation = (path: string) => {
@@ -42,16 +31,16 @@ export default function EmployeesPage() {
     setSelectedEmployee(null);
   };
 
-  const handleSaveEmployee = (employeeData: Employee) => {
-    // Here you would typically make an API call to save the employee
-    const employeeWithAdditionalFields: Employee = {
-      ...employeeData,
-      joinDate: employeeData.joinDate || new Date().toISOString().split('T')[0],
-      phone: employeeData.phone || '',
-      location: employeeData.location || ''
-    };
-    console.log('Saving employee:', employeeWithAdditionalFields);
-    handleCloseModal();
+  const handleSaveEmployee = (employee: Employee) => {
+    if (employee.id) {
+      setEmployees(employees.map(emp => 
+        emp.id === employee.id ? employee : emp
+      ));
+    } else {
+      setEmployees([...employees, { ...employee, id: Date.now() }]);
+    }
+    setSelectedEmployee(null);
+    setIsModalOpen(false);
   };
 
   return (

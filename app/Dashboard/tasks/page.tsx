@@ -106,11 +106,11 @@ const initialTasks: Task[] = [
 export default function TasksPage() {
   const router = useRouter();
   const pathname = usePathname();
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
   const [priorityFilter, setPriorityFilter] = useState('All');
-  const [selectedTask, setSelectedTask] = useState(null);
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -156,6 +156,26 @@ export default function TasksPage() {
     ));
     setSelectedTask(null);
     setIsEditMode(false);
+  };
+
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    if (selectedTask) {
+      const updatedTask: Task = {
+        ...selectedTask,
+        title: formData.get('title') as string,
+        description: formData.get('description') as string,
+        status: formData.get('status') as TaskStatus,
+        priority: formData.get('priority') as TaskPriority,
+        assignee: formData.get('assignee') as string,
+        due: formData.get('due') as string,
+        tags: (formData.get('tags') as string).split(',').map((tag: string) => tag.trim())
+      };
+      handleSaveTask(updatedTask);
+    }
   };
 
   return (
@@ -330,21 +350,7 @@ export default function TasksPage() {
               </div>
             </div>
             {isEditMode ? (
-              <form onSubmit={(e) => {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                const updatedTask = {
-                  ...selectedTask,
-                  title: formData.get('title'),
-                  description: formData.get('description'),
-                  status: formData.get('status'),
-                  priority: formData.get('priority'),
-                  assignee: formData.get('assignee'),
-                  due: formData.get('due'),
-                  tags: formData.get('tags').split(',').map(tag => tag.trim()),
-                };
-                handleSaveTask(updatedTask);
-              }} className="space-y-4">
+              <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Title</label>
                   <input

@@ -5,13 +5,13 @@ import Image from 'next/image';
 import EmployeeModal from './EmployeeModal';
 
 interface Employee {
-  id?: string;
+  id: number;
   name: string;
   email: string;
-  department: string;
   role: string;
+  department: string;
   status: 'Active' | 'Remote' | 'On Leave';
-  avatar: string;
+  avatar?: string;
 }
 
 interface EmployeeListProps {
@@ -29,41 +29,45 @@ export default function EmployeeList({
 }: EmployeeListProps) {
   const [employees, setEmployees] = useState<Employee[]>([
     {
+      id: 1,
       name: "John Doe",
-      email: "john.doe@company.com",
+      email: "john.doe@example.com",
       department: "Engineering",
       role: "Senior Developer",
       status: "Active",
       avatar: "https://ui-avatars.com/api/?name=John+Doe"
     },
     {
+      id: 2,
       name: "Jane Smith",
-      email: "jane.smith@company.com",
+      email: "jane.smith@example.com",
       department: "Design",
       role: "UI/UX Designer",
       status: "Remote",
       avatar: "https://ui-avatars.com/api/?name=Jane+Smith"
     },
     {
+      id: 3,
       name: "Mike Johnson",
-      email: "mike.johnson@company.com",
+      email: "mike.johnson@example.com",
       department: "Marketing",
       role: "Marketing Manager",
       status: "Active",
       avatar: "https://ui-avatars.com/api/?name=Mike+Johnson"
     },
     {
+      id: 4,
       name: "Sarah Wilson",
-      email: "sarah.wilson@company.com",
-      department: "Sales",
-      role: "Sales Representative",
+      email: "sarah.wilson@example.com",
+      department: "HR",
+      role: "HR Specialist",
       status: "On Leave",
       avatar: "https://ui-avatars.com/api/?name=Sarah+Wilson"
     }
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedEmployee, setSelectedEmployee] = useState<Employee | undefined>();
+  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
 
   // Filter and sort employees
   const filteredEmployees = employees.filter(employee => {
@@ -98,7 +102,7 @@ export default function EmployeeList({
   });
 
   const handleAddEmployee = () => {
-    setSelectedEmployee(undefined);
+    setSelectedEmployee(null);
     setIsModalOpen(true);
   };
 
@@ -114,18 +118,15 @@ export default function EmployeeList({
   };
 
   const handleSaveEmployee = (employee: Employee) => {
-    if (selectedEmployee) {
-      // Edit existing employee
+    if (employee.id) {
       setEmployees(employees.map(emp => 
-        emp.name === selectedEmployee.name ? employee : emp
+        emp.id === employee.id ? employee : emp
       ));
     } else {
-      // Add new employee
-      setEmployees([...employees, {
-        ...employee,
-        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(employee.name)}`
-      }]);
+      setEmployees([...employees, { ...employee, id: Date.now() }]);
     }
+    setSelectedEmployee(null);
+    setIsModalOpen(false);
   };
 
   return (
@@ -168,7 +169,7 @@ export default function EmployeeList({
                       <div className="h-10 w-10 flex-shrink-0 relative">
                         <Image
                           className="rounded-full"
-                          src={employee.avatar}
+                          src={employee.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(employee.name)}`}
                           alt={employee.name}
                           fill
                           sizes="40px"
