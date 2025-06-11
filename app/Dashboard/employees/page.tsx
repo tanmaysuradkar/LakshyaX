@@ -391,7 +391,6 @@ export default function EmployeesPage() {
             departmentFilter={departmentFilter}
             statusFilter={statusFilter}
             sortBy={sortBy}
-            onEditEmployee={handleEditEmployee}
           />
 
           {/* Employee Modal */}
