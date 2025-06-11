@@ -6,6 +6,17 @@ import { useRouter, usePathname } from 'next/navigation';
 type TaskPriority = 'High' | 'Medium' | 'Low';
 type TaskStatus = 'Completed' | 'In Progress' | 'Pending';
 
+interface Task {
+  id: number;
+  title: string;
+  description: string;
+  status: TaskStatus;
+  priority: TaskPriority;
+  assignee: string;
+  due: string;
+  tags: string[];
+}
+
 const sidebarSections = [
   { key: 'dashboard', label: 'Dashboard', path: '/Dashboard', icon: (
     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,7 +60,7 @@ const sidebarSections = [
   ) },
 ];
 
-const initialTasks = [
+const initialTasks: Task[] = [
   { 
     id: 1, 
     title: 'Design login page', 
@@ -129,17 +140,17 @@ export default function TasksPage() {
     }
   };
 
-  const handleDeleteTask = (taskId) => {
+  const handleDeleteTask = (taskId: number) => {
     setTasks(tasks.filter(task => task.id !== taskId));
     setSelectedTask(null);
   };
 
-  const handleEditTask = (task) => {
+  const handleEditTask = (task: Task) => {
     setSelectedTask(task);
     setIsEditMode(true);
   };
 
-  const handleSaveTask = (updatedTask) => {
+  const handleSaveTask = (updatedTask: Task) => {
     setTasks(tasks.map(task => 
       task.id === updatedTask.id ? updatedTask : task
     ));
