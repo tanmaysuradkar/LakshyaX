@@ -29,7 +29,7 @@ export default function SalesPage() {
     amount: '',
     status: 'Pending'
   });
-  const [sales] = useState<Sale[]>([
+  const [sales, setSales] = useState<Sale[]>([
     {
       id: '#SALE-001',
       customer: {
