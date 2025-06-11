@@ -8,7 +8,7 @@ interface Employee {
   email: string;
   role: string;
   department: string;
-  status: string;
+  status: 'Active' | 'Remote' | 'On Leave';
   avatar?: string;
 }
 

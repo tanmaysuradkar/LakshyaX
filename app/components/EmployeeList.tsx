@@ -5,7 +5,9 @@ import Image from 'next/image';
 import EmployeeModal from './EmployeeModal';
 
 interface Employee {
+  id?: string;
   name: string;
+  email: string;
   department: string;
   role: string;
   status: 'Active' | 'Remote' | 'On Leave';
@@ -30,6 +32,7 @@ export default function EmployeeList({
   const [employees, setEmployees] = useState<Employee[]>([
     {
       name: "John Doe",
+      email: "john.doe@company.com",
       department: "Engineering",
       role: "Senior Developer",
       status: "Active",
@@ -37,6 +40,7 @@ export default function EmployeeList({
     },
     {
       name: "Jane Smith",
+      email: "jane.smith@company.com",
       department: "Design",
       role: "UI/UX Designer",
       status: "Remote",
@@ -44,6 +48,7 @@ export default function EmployeeList({
     },
     {
       name: "Mike Johnson",
+      email: "mike.johnson@company.com",
       department: "Marketing",
       role: "Marketing Manager",
       status: "Active",
@@ -51,6 +56,7 @@ export default function EmployeeList({
     },
     {
       name: "Sarah Wilson",
+      email: "sarah.wilson@company.com",
       department: "Sales",
       role: "Sales Representative",
       status: "On Leave",
@@ -127,6 +133,14 @@ export default function EmployeeList({
   return (
     <>
       <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+        <div className="p-4 flex justify-end">
+          <button
+            onClick={handleAddEmployee}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+          >
+            Add Employee
+          </button>
+        </div>
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
@@ -186,7 +200,7 @@ export default function EmployeeList({
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex items-center gap-2">
                       <button
-                        onClick={() => onEditEmployee?.(employee)}
+                        onClick={() => handleEditEmployee(employee)}
                         className="text-blue-600 hover:text-blue-900"
                       >
                         Edit
