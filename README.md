@@ -19,7 +19,7 @@
 |--------------|------------------------------------|
 | Frontend     | [React.js](https://reactjs.org/)   |
 | Backend      | [Next.js](https://nextjs.org/) + [FastAPI](https://fastapi.tiangolo.com/) |
-| Database     | SQL (PostgreSQL / MySQL supported) |
+| Database     | SQL  |
 | Auth         | OAuth 2.0 (Google & GitHub)        |
 | Realtime     | WebSockets / Custom Signaling (for video & messaging) |
 
