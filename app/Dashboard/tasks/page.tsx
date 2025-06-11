@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
 type TaskPriority = 'High' | 'Medium' | 'Low';
+type TaskStatus = 'Completed' | 'In Progress' | 'Pending';
 
 const sidebarSections = [
   { key: 'dashboard', label: 'Dashboard', path: '/Dashboard', icon: (
@@ -119,7 +120,7 @@ export default function TasksPage() {
     }
   };
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: TaskStatus) => {
     switch (status) {
       case 'Completed': return 'bg-green-100 text-green-700';
       case 'In Progress': return 'bg-blue-100 text-blue-700';
