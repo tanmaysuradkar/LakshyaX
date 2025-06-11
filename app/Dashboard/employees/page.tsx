@@ -6,7 +6,7 @@ import { useState } from 'react';
 import EmployeeModal from '../../components/EmployeeModal';
 
 interface Employee {
-  id: string;
+  id?: string;
   name: string;
   role: string;
   department: string;
@@ -14,7 +14,7 @@ interface Employee {
   email: string;
   phone?: string;
   location?: string;
-  joinDate: string;
+  joinDate?: string;
   avatar?: string;
 }
 
@@ -37,11 +37,6 @@ export default function EmployeesPage() {
     setIsModalOpen(true);
   };
 
-  const handleEditEmployee = (employee: Employee) => {
-    setSelectedEmployee(employee);
-    setIsModalOpen(true);
-  };
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedEmployee(null);
@@ -49,7 +44,13 @@ export default function EmployeesPage() {
 
   const handleSaveEmployee = (employeeData: Employee) => {
     // Here you would typically make an API call to save the employee
-    console.log('Saving employee:', employeeData);
+    const employeeWithAdditionalFields: Employee = {
+      ...employeeData,
+      joinDate: employeeData.joinDate || new Date().toISOString().split('T')[0],
+      phone: employeeData.phone || '',
+      location: employeeData.location || ''
+    };
+    console.log('Saving employee:', employeeWithAdditionalFields);
     handleCloseModal();
   };
 
