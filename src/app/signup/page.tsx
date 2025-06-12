@@ -12,7 +12,7 @@ export default function SignUp() {
           <div className="bg-white p-8 rounded-lg shadow-md">
             <h1 className="text-2xl font-bold text-center mb-8">Create Your Account or Login Your Account</h1>
             
-            {/* <form className="space-y-6">
+            <form className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
@@ -103,17 +103,17 @@ export default function SignUp() {
                   Create Account
                 </button>
               </div>
-            </form> */}
+            </form>
 
             <div className="mt-6">
-              {/* <div className="relative">
+              <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
                   <span className="px-2 bg-white text-gray-500">Or sign up with</span>
                 </div>
-              </div> */}
+              </div>
 
               <div className="mt-6 grid grid-cols-2 gap-3">
                 <button
