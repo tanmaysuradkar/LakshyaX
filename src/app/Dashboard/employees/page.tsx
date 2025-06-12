@@ -4,7 +4,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import EmployeeList from '../../components/EmployeeList';
 import { useState } from 'react';
 import EmployeeModal from '../../components/EmployeeModal';
-import { Employee } from '@/app/types/employee';
+import { Employee } from '@/src/app/types/employee';
 
 export default function EmployeesPage() {
   const router = useRouter();
