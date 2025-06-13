@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@livekit/components-react": "^2.9.9",
+    "@types/bcrypt": "^5.0.2",
     "@types/dom-mediacapture-record": "^1.0.22",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/nodemailer": "^6.4.17",
     "bcrypt": "^6.0.0",
     "chart.js": "^4.4.9",
     "jsonwebtoken": "^9.0.2",
