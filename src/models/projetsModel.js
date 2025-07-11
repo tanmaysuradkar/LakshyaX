@@ -15,25 +15,30 @@ const projectsSchema = new mongoose.Schema({
         required : [true,"Please provide a Role"],
     },
     Assignee :{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required : [true,"Please provide a Assignee"],
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref: 'User',
+        type: String,
+        required : [true,"Please provide a Role"],
     },
     Status:{
         type: String,
         required: true,
-        enum: ['', '', ''], // Example vehicle types
+        enum: ['Active', 'In Progress', 'Completed'], // Example vehicle types
     },
     DueDate:{
         type:String,
     },
     TeamMembers:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref: 'User',
+        type: String,
+        required : [true,"Please provide a Role"],
     }],
     department:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref: 'User',
+        type: String,
+        required : [true,"Please provide a Role"],
     }],
 }, { timestamps: true })
 const User = mongoose.models.projects || mongoose.model("projects",projectsSchema);

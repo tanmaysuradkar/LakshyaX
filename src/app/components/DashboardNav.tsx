@@ -33,9 +33,9 @@ const DashboardNav = () => {
         <h2 className="text-xl font-bold text-blue-600 mb-8">LakshyaX</h2>
         <nav className="space-y-2">
           <button
-            onClick={() => handleNavigation("/Dashboard")}
+            onClick={() => handleNavigation("/AdminDashboard")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-              pathname === "/Dashboard"
+              pathname === "/AdminDashboard"
                 ? "bg-blue-50 text-blue-600"
                 : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
             }`}
@@ -54,7 +54,7 @@ const DashboardNav = () => {
               />
             </svg>
             <span>Dashboard</span>
-            {pathname === "/Dashboard" && (
+            {pathname === "/AdminDashboard" && (
               <svg
                 className="w-5 h-5 ml-auto"
                 fill="none"
@@ -72,9 +72,9 @@ const DashboardNav = () => {
           </button>
 
           <button
-            onClick={() => handleNavigation("/Dashboard/sales")}
+            onClick={() => handleNavigation("/AdminDashboard/sales")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-              pathname === "/Dashboard/sales"
+              pathname === "/AdminDashboard/sales"
                 ? "bg-blue-50 text-blue-600"
                 : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
             }`}
@@ -93,7 +93,7 @@ const DashboardNav = () => {
               />
             </svg>
             <span>Sales</span>
-            {pathname === "/Dashboard/sales" && (
+            {pathname === "/AdminDashboard/sales" && (
               <svg
                 className="w-5 h-5 ml-auto"
                 fill="none"
@@ -111,9 +111,9 @@ const DashboardNav = () => {
           </button>
 
           <button
-            onClick={() => handleNavigation("/Dashboard/employees")}
+            onClick={() => handleNavigation("/AdminDashboard/employees")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-              pathname === "/Dashboard/employees"
+              pathname === "/AdminDashboard/employees"
                 ? "bg-blue-50 text-blue-600"
                 : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
             }`}
@@ -132,7 +132,7 @@ const DashboardNav = () => {
               />
             </svg>
             <span>Employees</span>
-            {pathname === "/Dashboard/employees" && (
+            {pathname === "/AdminDashboard/employees" && (
               <svg
                 className="w-5 h-5 ml-auto"
                 fill="none"
@@ -150,9 +150,9 @@ const DashboardNav = () => {
           </button>
 
           <button
-            onClick={() => handleNavigation("/Dashboard/projects")}
+            onClick={() => handleNavigation("/AdminDashboard/projects")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-              pathname === "/Dashboard/projects"
+              pathname === "/AdminDashboard/projects"
                 ? "bg-blue-50 text-blue-600"
                 : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
             }`}
@@ -171,7 +171,7 @@ const DashboardNav = () => {
               />
             </svg>
             <span>Projects</span>
-            {pathname === "/Dashboard/projects" && (
+            {pathname === "/AdminDashboard/projects" && (
               <svg
                 className="w-5 h-5 ml-auto"
                 fill="none"
@@ -189,9 +189,9 @@ const DashboardNav = () => {
           </button>
 
           <button
-            onClick={() => handleNavigation("/Dashboard/tasks")}
+            onClick={() => handleNavigation("/AdminDashboard/tasks")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-              pathname === "/Dashboard/tasks"
+              pathname === "/AdminDashboard/tasks"
                 ? "bg-blue-50 text-blue-600"
                 : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
             }`}
@@ -210,7 +210,7 @@ const DashboardNav = () => {
               />
             </svg>
             <span>Tasks</span>
-            {pathname === "/Dashboard/tasks" && (
+            {pathname === "/AdminDashboard/tasks" && (
               <svg
                 className="w-5 h-5 ml-auto"
                 fill="none"
@@ -228,9 +228,9 @@ const DashboardNav = () => {
           </button>
 
           <button
-            onClick={() => handleNavigation("/Dashboard/meet")}
+            onClick={() => handleNavigation("/AdminDashboard/meet")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-              pathname === "/Dashboard/meet"
+              pathname === "/AdminDashboard/meet"
                 ? "bg-blue-50 text-blue-600"
                 : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
             }`}
@@ -249,7 +249,7 @@ const DashboardNav = () => {
               />
             </svg>
             <span>Meet</span>
-            {pathname === "/Dashboard/meet" && (
+            {pathname === "/AdminDashboard/meet" && (
               <svg
                 className="w-5 h-5 ml-auto"
                 fill="none"
@@ -267,9 +267,9 @@ const DashboardNav = () => {
           </button>
 
           <button
-            onClick={() => handleNavigation("/Dashboard/message")}
+            onClick={() => handleNavigation("/AdminDashboard/message")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-              pathname === "/Dashboard/message"
+              pathname === "/AdminDashboard/message"
                 ? "bg-blue-50 text-blue-600"
                 : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
             }`}
@@ -288,7 +288,7 @@ const DashboardNav = () => {
               />
             </svg>
             <span>Message</span>
-            {pathname === "/Dashboard/message" && (
+            {pathname === "/AdminDashboard/message" && (
               <svg
                 className="w-5 h-5 ml-auto"
                 fill="none"
@@ -306,9 +306,9 @@ const DashboardNav = () => {
           </button>
 
           <button
-            onClick={() => handleNavigation("/Dashboard/profile")}
+            onClick={() => handleNavigation("/AdminDashboard/profile")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-              pathname === "/Dashboard/profile"
+              pathname === "/AdminDashboard/profile"
                 ? "bg-blue-50 text-blue-600"
                 : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
             }`}
@@ -327,7 +327,7 @@ const DashboardNav = () => {
               />
             </svg>
             <span>Profile</span>
-            {pathname === "/Dashboard/profile" && (
+            {pathname === "/AdminDashboard/profile" && (
               <svg
                 className="w-5 h-5 ml-auto"
                 fill="none"
