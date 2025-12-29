@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-  name: {
+  tasksName: {
     type: String,
     required: true,
     trim: true
   },
   description: {
     type: String,
+    required: true,
     trim: true
   },
   status: {
@@ -21,8 +22,9 @@ const taskSchema = new mongoose.Schema({
     default: 'Medium'
   },
   assignee: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Employee', // Assuming you have the Employee model we made earlier
+    type: String,
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: 'Employee', // Assuming you have the Employee model we made earlier
     required: true
   },
   dueDate: {
@@ -35,6 +37,6 @@ const taskSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-const Task = mongoose.model('Task', taskSchema);
+const Task = mongoose.models.Task || mongoose.model('Task', taskSchema);
 
 module.exports = Task;

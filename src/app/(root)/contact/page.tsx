@@ -2,7 +2,7 @@ import Navbar from '@/app/components/Navbar';
 
 export default function Contact() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <main className="min-h-screen text-black bg-gradient-to-b from-gray-50 to-white">
       <Navbar />
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto">
@@ -50,16 +50,16 @@ export default function Contact() {
                     type="text"
                     id="name"
                     name="name"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 block w-full rounded-md capitalize border-gray-300 shadow-sm py-1 px-2 focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email For Contact You</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm py-1 px-2 focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -68,7 +68,7 @@ export default function Contact() {
                     id="message"
                     name="message"
                     rows={4}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm py-1 px-2 focus:border-blue-500 focus:ring-blue-500"
                   ></textarea>
                 </div>
                 <button

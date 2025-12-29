@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import DashboardNav from '@/app/components/DashboardNav';
+import DashboardNav from '@/app/components/TLDashboardNav';
 
 type TaskPriority = 'High' | 'Medium' | 'Low';
 type TaskStatus = 'Completed' | 'In Progress' | 'Pending';

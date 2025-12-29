@@ -7,6 +7,7 @@ export async function POST(req: NextRequest,) {
     const {
       projectName,
       Description,
+      company,
       Role,
       Assignee,
       Status,
@@ -20,6 +21,7 @@ export async function POST(req: NextRequest,) {
     const newProjects = new projectModel({
       projectName,
       Description,
+      company,
       Role,
       Assignee,
       Status,

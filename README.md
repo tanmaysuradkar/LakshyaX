@@ -18,7 +18,7 @@
 | Layer        | Technology                        |
 |--------------|------------------------------------|
 | Frontend     | [React.js](https://reactjs.org/)   |
-| Backend      | [Next.js](https://nextjs.org/) + [FastAPI](https://fastapi.tiangolo.com/) |
+| Backend      | [Next.js](https://nextjs.org/)|
 | Database     | SQL  |
 | Auth         | OAuth 2.0 (Google & GitHub)        |
 | Realtime     | WebSockets / Custom Signaling (for video & messaging) |

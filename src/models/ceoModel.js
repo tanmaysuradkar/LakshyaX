@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ceoSchema = new mongoose.Schema({
-  name: {
+  ceoName: {
     type: String,
     required: true,
     trim: true
@@ -19,7 +19,8 @@ const ceoSchema = new mongoose.Schema({
   },
   companyType: {
     type: String,
-    trim: true
+    trim: true,
+    required: true,
   },
   joinedDate: {
     type: Date,
@@ -32,6 +33,6 @@ const ceoSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-const CEO = mongoose.model('CEO', ceoSchema);
+const CEO = mongoose.models.CEO || mongoose.model('CEO', ceoSchema);
 
 module.exports = CEO;

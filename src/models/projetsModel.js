@@ -10,6 +10,11 @@ const projectsSchema = new mongoose.Schema({
         type: String,
         required : [true,"Please provide a Description"]
     },
+    company: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'companies'
+      },
     Role :{
         type: String,
         required : [true,"Please provide a Role"],
@@ -41,6 +46,6 @@ const projectsSchema = new mongoose.Schema({
         required : [true,"Please provide a Role"],
     }],
 }, { timestamps: true })
-const User = mongoose.models.projects || mongoose.model("projects",projectsSchema);
+const project = mongoose.models.projects || mongoose.model("projects",projectsSchema);
 
-export default User
+export default project

@@ -11,6 +11,7 @@ export async function POST(req: NextRequest) {
     if (!project) {
       return NextResponse.json({ error: "project is not exists" }, { status: 400 });
     }
+    
     return NextResponse.json({
                 message: "project created successfully",
                 success: true,
