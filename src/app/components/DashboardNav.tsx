@@ -29,9 +29,9 @@ const DashboardNav = () => {
   }, []);
   return (
     <aside className="w-64 bg-white shadow-sm h-screen fixed left-0 top-0">
-      <div className="p-4">
+      <div className="p-4 flex flex-col h-full">
         <h2 className="text-xl font-bold text-blue-600 mb-8">LakshyaX</h2>
-        <nav className="space-y-2">
+        <nav className="space-y-2 overflow-y-auto flex-1 pr-2">
           <button
             onClick={() => handleNavigation("/AdminDashboard")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
@@ -328,6 +328,93 @@ const DashboardNav = () => {
             </svg>
             <span>Profile</span>
             {pathname === "/AdminDashboard/profile" && (
+              <svg
+                className="w-5 h-5 ml-auto"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            )}
+          </button>
+
+          <button
+            onClick={() => handleNavigation("/AdminDashboard/budgets")}
+            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
+              pathname === "/AdminDashboard/budgets"
+                ? "bg-blue-50 text-blue-600"
+                : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
+            }`}
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+            </svg>
+            <span>Budgets</span>
+            {pathname === "/AdminDashboard/budgets" && (
+              <svg
+                className="w-5 h-5 ml-auto"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            )}
+          </button>
+
+          <button
+            onClick={() => handleNavigation("/AdminDashboard/approvals")}
+            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
+              pathname === "/AdminDashboard/approvals"
+                ? "bg-blue-50 text-blue-600"
+                : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
+            }`}
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Approvals</span>
+            {pathname === "/AdminDashboard/approvals" && (
+              <svg
+                className="w-5 h-5 ml-auto"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            )}
+          </button>
+
+          <button
+            onClick={() => handleNavigation("/AdminDashboard/projects/budget")}
+            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
+              pathname === "/AdminDashboard/projects/budget"
+                ? "bg-blue-50 text-blue-600"
+                : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
+            }`}
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7h18M3 12h18M3 17h18" />
+            </svg>
+            <span>Project Budgets</span>
+            {pathname === "/AdminDashboard/projects/budget" && (
               <svg
                 className="w-5 h-5 ml-auto"
                 fill="none"
