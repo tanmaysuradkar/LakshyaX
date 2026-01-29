@@ -226,8 +226,8 @@ const DashboardNav = () => {
               </svg>
             )}
           </button>
-
-          <button
+            {/* This is for end PART, For now This NOT work */}
+          {/* <button
             onClick={() => handleNavigation("/AdminDashboard/meet")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
               pathname === "/AdminDashboard/meet"
@@ -303,7 +303,7 @@ const DashboardNav = () => {
                 />
               </svg>
             )}
-          </button>
+          </button> */}
 
           <button
             onClick={() => handleNavigation("/AdminDashboard/profile")}

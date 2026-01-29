@@ -148,8 +148,9 @@ const EmployeesDashboardNav = () => {
               </svg>
             )}
           </button>
-
-          <button
+          {/* This is for end PART, For now This NOT work */}
+          {
+          /* <button
             onClick={() => handleNavigation("/Dashboard/meet")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
               pathname === "/Dashboard/meet"
@@ -187,7 +188,6 @@ const EmployeesDashboardNav = () => {
               </svg>
             )}
           </button>
-
           <button
             onClick={() => handleNavigation("/Dashboard/message")}
             className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
@@ -225,7 +225,8 @@ const EmployeesDashboardNav = () => {
                 />
               </svg>
             )}
-          </button>
+          </button> */
+          }
 
           <button
             onClick={() => handleNavigation("/Dashboard/profile")}
