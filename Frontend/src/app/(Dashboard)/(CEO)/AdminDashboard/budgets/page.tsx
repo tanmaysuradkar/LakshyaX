@@ -87,78 +87,86 @@ const BudgetsPage: React.FC = () => {
     <div className="flex text-black min-h-screen bg-gray-50">
       <DashboardNav />
 
-      <div className="flex-1 ml-64">
-        <header className="bg-white shadow-sm">
-          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-semibold">Budget Summary</h1>
-              <p className="text-sm text-gray-600">Overview of budget requests and approvals.</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <button onClick={fetchBudgets} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">Refresh</button>
-              <div className="text-sm text-gray-500">Total: <strong className="text-gray-900">{stats.total}</strong></div>
+      <div className="flex-1 w-full lg:ml-0">
+        <header className="bg-white shadow-sm sticky top-0 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div>
+                <h1 className="text-xl sm:text-2xl font-semibold">Budget Summary</h1>
+                <p className="text-xs sm:text-sm text-gray-600">Overview of budget requests and approvals.</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <button onClick={fetchBudgets} className="px-3 sm:px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-sm sm:text-base">Refresh</button>
+                <div className="text-xs sm:text-sm text-gray-500">Total: <strong className="text-gray-900">{stats.total}</strong></div>
+              </div>
             </div>
           </div>
         </header>
 
-        <main className="container mx-auto px-4 py-6">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <p className="text-sm text-gray-500">Total Requests</p>
-              <h3 className="text-2xl font-bold">{stats.total}</h3>
-              <p className="text-sm text-gray-500">Requested: <strong className="text-gray-900">${stats.totalRequested.toLocaleString()}</strong></p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+              <p className="text-xs sm:text-sm text-gray-500">Total Requests</p>
+              <h3 className="text-xl sm:text-2xl font-bold">{stats.total}</h3>
+              <p className="text-xs sm:text-sm text-gray-500">Requested: <strong className="text-gray-900">${stats.totalRequested.toLocaleString()}</strong></p>
             </div>
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <p className="text-sm text-gray-500">Approved</p>
-              <h3 className="text-2xl font-bold text-green-600">{stats.approved}</h3>
-              <p className="text-sm text-gray-500">Approved Amt: <strong className="text-green-700">${stats.totalApproved.toLocaleString()}</strong></p>
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+              <p className="text-xs sm:text-sm text-gray-500">Approved</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-green-600">{stats.approved}</h3>
+              <p className="text-xs sm:text-sm text-gray-500">Approved Amt: <strong className="text-green-700">${stats.totalApproved.toLocaleString()}</strong></p>
             </div>
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <p className="text-sm text-gray-500">Pending</p>
-              <h3 className="text-2xl font-bold text-yellow-600">{stats.pending}</h3>
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+              <p className="text-xs sm:text-sm text-gray-500">Pending</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-yellow-600">{stats.pending}</h3>
             </div>
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <p className="text-sm text-gray-500">Rejected</p>
-              <h3 className="text-2xl font-bold text-red-600">{stats.rejected}</h3>
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+              <p className="text-xs sm:text-sm text-gray-500">Rejected</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-red-600">{stats.rejected}</h3>
             </div>
           </div>
 
           {/* Summary only */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
             {loading ? (
-              <div>Loading…</div>
+              <div className="text-center py-8">Loading…</div>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-4 sm:space-y-6">
                 {filtered.length === 0 ? (
-                  <div className="text-gray-500">No budget requests found.</div>
+                  <div className="text-center py-8 text-gray-500">No budget requests found.</div>
                 ) : (
-                  <ul className="divide-y">
+                  <ul className="divide-y divide-gray-200">
                     {filtered.map((b) => (
-                      <li key={b.id} className="py-4">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <div className="flex items-center gap-3">
-                              <h3 className="text-lg font-medium">{b.title}</h3>
-                              <span className="text-sm text-gray-400">• {b.department}</span>
-                              <span className="text-sm text-gray-400">• {new Date(b.submittedAt).toLocaleString()}</span>
+                      <li key={b.id} className="py-4 sm:py-6">
+                        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                              <h3 className="text-base sm:text-lg font-medium text-gray-900">{b.title}</h3>
+                              <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-500">
+                                <span>• {b.department}</span>
+                                <span>• {new Date(b.submittedAt).toLocaleString()}</span>
+                              </div>
                             </div>
-                            <p className="mt-2 text-gray-600">{b.notes || "No plan details provided."}</p>
+                            <p className="text-sm sm:text-base text-gray-600 mt-1">{b.notes || "No plan details provided."}</p>
                           </div>
 
-                          <div className="text-right">
-                            <div className="text-sm text-gray-500">Requested</div>
-                            <div className="text-lg font-semibold">${b.amountRequested.toLocaleString()}</div>
-                            <div className="mt-2">Approved: {b.amountApproved ? `$${b.amountApproved.toLocaleString()}` : "—"}</div>
+                          <div className="flex flex-col sm:flex-row items-start sm:items-end gap-3 sm:gap-4 lg:text-right">
+                            <div className="flex-1 sm:flex-initial">
+                              <div className="text-xs sm:text-sm text-gray-500">Requested</div>
+                              <div className="text-base sm:text-lg font-semibold text-gray-900">${b.amountRequested.toLocaleString()}</div>
+                              <div className="text-xs sm:text-sm text-gray-600 mt-1">Approved: {b.amountApproved ? `$${b.amountApproved.toLocaleString()}` : "—"}</div>
+                            </div>
 
-                            <div className="mt-4 flex items-center justify-end gap-2">
-                              <span className={`px-2 py-1 rounded-full text-sm ${
-                                b.status === "pending" ? "bg-yellow-100 text-yellow-800" : b.status === "approved" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+                              <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full whitespace-nowrap ${
+                                b.status === "pending" ? "bg-yellow-100 text-yellow-800" : 
+                                b.status === "approved" ? "bg-green-100 text-green-800" : 
+                                "bg-red-100 text-red-800"
                               }`}>
                                 {b.status}
                               </span>
 
-                              <button onClick={() => setSelectedBudget(b)} className="px-3 py-1 rounded-md border border-gray-300 text-sm">View</button>
+                              <button onClick={() => setSelectedBudget(b)} className="px-3 py-1 rounded-md border border-gray-300 text-xs sm:text-sm hover:bg-gray-50 transition-colors">View</button>
                             </div>
                           </div>
                         </div>
@@ -171,54 +179,60 @@ const BudgetsPage: React.FC = () => {
           </div>
           {/* Detail modal */}
           {selectedBudget && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-              <div className="bg-white rounded-lg p-6 w-11/12 md:w-3/4 lg:w-2/4 max-h-[80vh] overflow-auto">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h2 className="text-xl font-semibold">{selectedBudget.title}</h2>
-                    <p className="text-sm text-gray-500">Submitted by {selectedBudget.submittedBy} • {new Date(selectedBudget.submittedAt).toLocaleString()}</p>
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+              <div className="bg-white rounded-lg p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-auto">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-lg sm:text-xl font-semibold text-gray-900">{selectedBudget.title}</h2>
+                    <p className="text-xs sm:text-sm text-gray-500 mt-1">Submitted by {selectedBudget.submittedBy} • {new Date(selectedBudget.submittedAt).toLocaleString()}</p>
                   </div>
-                  <button onClick={() => setSelectedBudget(null)} className="text-gray-500 hover:text-gray-800">Close</button>
+                  <button onClick={() => setSelectedBudget(null)} className="text-gray-500 hover:text-gray-800 ml-4 flex-shrink-0">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
                 </div>
 
-                <div className="mt-4">
-                  <h3 className="font-medium">Plan / Notes</h3>
-                  <p className="mt-2 text-gray-600">{selectedBudget.notes || "No details provided."}</p>
+                <div className="space-y-4 sm:space-y-6">
+                  <div>
+                    <h3 className="text-sm sm:text-base font-medium text-gray-900">Plan / Notes</h3>
+                    <p className="mt-2 text-sm sm:text-base text-gray-600">{selectedBudget.notes || "No details provided."}</p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+                    <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                      <p className="text-xs sm:text-sm text-gray-500">Requested</p>
+                      <div className="text-lg sm:text-xl font-semibold text-gray-900">${selectedBudget.amountRequested.toLocaleString()}</div>
+                    </div>
+                    <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                      <p className="text-xs sm:text-sm text-gray-500">Approved</p>
+                      <div className="text-lg sm:text-xl font-semibold text-gray-900">{selectedBudget.amountApproved ? `$${selectedBudget.amountApproved.toLocaleString()}` : "—"}</div>
+                    </div>
+                    <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                      <p className="text-xs sm:text-sm text-gray-500">Estimated Return</p>
+                      <div className="text-lg sm:text-xl font-semibold text-gray-900">${((selectedBudget.amountApproved ?? selectedBudget.amountRequested) * 0.15).toLocaleString()}</div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-sm sm:text-base font-medium text-gray-900">Documents</h3>
+                    {selectedBudget.documents && selectedBudget.documents.length > 0 ? (
+                      <ul className="mt-2 space-y-2">
+                        {selectedBudget.documents.map((d, i) => (
+                          <li key={i} className="flex items-center gap-2">
+                            <a href={d.url} className="text-blue-600 hover:text-blue-800 text-sm sm:text-base hover:underline" target="_blank" rel="noreferrer">{d.name}</a>
+                            <span className="text-xs text-gray-400">{d.type}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className="text-sm text-gray-500 mt-2">No documents attached.</div>
+                    )}
+                  </div>
                 </div>
 
-                <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div>
-                    <p className="text-sm text-gray-500">Requested</p>
-                    <div className="font-semibold">${selectedBudget.amountRequested.toLocaleString()}</div>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Approved</p>
-                    <div className="font-semibold">{selectedBudget.amountApproved ? `$${selectedBudget.amountApproved.toLocaleString()}` : "—"}</div>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Estimated Return</p>
-                    <div className="font-semibold">${((selectedBudget.amountApproved ?? selectedBudget.amountRequested) * 0.15).toLocaleString()}</div>
-                  </div>
-                </div>
-
-                <div className="mt-6">
-                  <h3 className="font-medium">Documents</h3>
-                  {selectedBudget.documents && selectedBudget.documents.length > 0 ? (
-                    <ul className="mt-2 space-y-2">
-                      {selectedBudget.documents.map((d, i) => (
-                        <li key={i}>
-                          <a href={d.url} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">{d.name}</a>
-                          <span className="text-sm text-gray-400 ml-2">{d.type}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <div className="text-gray-500 mt-2">No documents attached.</div>
-                  )}
-                </div>
-
-                <div className="mt-6 flex justify-end gap-3">
-                  <button onClick={() => setSelectedBudget(null)} className="px-4 py-2 bg-gray-100 rounded">Close</button>
+                <div className="mt-6 flex flex-col sm:flex-row justify-end gap-3">
+                  <button onClick={() => setSelectedBudget(null)} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm sm:text-base">Close</button>
                 </div>
               </div>
             </div>

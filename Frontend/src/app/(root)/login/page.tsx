@@ -41,10 +41,10 @@ export default function Login() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Navbar />
-      <div className="container mx-auto px-4 py-20">
-        <div className="max-w-md mx-auto">
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h1 className=" text-black text-2xl font-bold text-center mb-8">Login to Your Account</h1>
+      <div className="w-full px-4 py-8 sm:py-12 lg:py-20">
+        <div className="max-w-sm mx-auto">
+          <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md">
+            <h1 className="text-black text-2xl sm:text-3xl font-bold text-center mb-8">Login to Your Account</h1>
             
             <div className="space-y-6">
               <div>
@@ -58,7 +58,7 @@ export default function Login() {
                   value={user.email}
                   onChange={(e) => setUser({ ...user, email: e.target.value })}
                   required
-                  className="text-black p-2 mt-1 block w-full rounded-sm border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className="text-black p-2 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
 
@@ -73,36 +73,16 @@ export default function Login() {
                   value={user.password}
                   onChange={(e) => setUser({ ...user, password: e.target.value })}
                   required
-                  className="text-black p-2 mt-1 block w-full rounded-sm border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className="text-black p-2 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
 
-              {/* <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                    Remember me
-                  </label>
-                </div>
-
-                <div className="text-sm">
-                  <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
-                    Forgot your password?
-                  </a>
-                </div>
-              </div> */}
-
               <div>
                 <button
-                  onClick={()=>{
+                  onClick={() => {
                     onLogin();
                   }}
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                 >
                   {verificationMessage}
                 </button>
@@ -119,10 +99,10 @@ export default function Login() {
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-2 gap-3">
+              <div className="mt-6 grid grid-cols-2 gap-2 sm:gap-3">
                 <button
                   type="button"
-                  className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                  className="w-full inline-flex justify-center py-2 px-3 sm:px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors"
                 >
                   <span className="sr-only">Sign in with Google</span>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -132,7 +112,7 @@ export default function Login() {
 
                 <button
                   type="button"
-                  className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                  className="w-full inline-flex justify-center py-2 px-3 sm:px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors"
                 >
                   <span className="sr-only">Sign in with GitHub</span>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

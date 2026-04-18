@@ -293,44 +293,44 @@ export default function MessagePage() {
           <DashboardNav/>
 
       {/* Main Content Area */}
-      <div className="flex-1 ml-64">
-        <div className="flex h-screen">
+      <div className="flex-1 w-full lg:ml-0">
+        <div className="flex flex-col lg:flex-row h-screen">
           {/* Conversations Sidebar */}
-          <div className="w-80 bg-white border-r border-gray-200">
+          <div className="w-full lg:w-80 bg-white border-r border-gray-200 lg:h-screen">
             <div className="p-4 border-b border-gray-200">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-900">Messages</h2>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Messages</h2>
                 <button
                   onClick={() => setShowProfileSearch(true)}
                   className="p-2 text-gray-500 hover:text-blue-600 rounded-full hover:bg-gray-100"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                   </svg>
                 </button>
               </div>
             </div>
-            <div className="overflow-y-auto h-[calc(100vh-4rem)]">
+            <div className="overflow-y-auto h-[calc(100vh-4rem)] lg:h-[calc(100vh-8rem)]">
               {conversations.map(chat => (
                 <button
                   key={chat.id}
                   onClick={() => setSelectedChat(chat.id)}
-                  className={`w-full p-4 flex items-center space-x-3 hover:bg-gray-50 transition-colors ${
+                  className={`w-full p-3 sm:p-4 flex items-center space-x-3 hover:bg-gray-50 transition-colors ${
                     selectedChat === chat.id ? 'bg-blue-50' : ''
                   }`}
                 >
-                  <div className="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center">
-                    {chat.avatar}
+                  <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0">
+                    <span className="text-xs sm:text-sm">{chat.avatar}</span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-center">
                       <h3 className="text-sm font-medium text-gray-900 truncate">{chat.name}</h3>
                       <span className="text-xs text-gray-500">{chat.time}</span>
                     </div>
-                    <p className="text-sm text-gray-500 truncate">{chat.lastMessage}</p>
+                    <p className="text-xs sm:text-sm text-gray-500 truncate">{chat.lastMessage}</p>
                   </div>
                   {chat.unread > 0 && (
-                    <div className="h-5 w-5 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center">
+                    <div className="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center flex-shrink-0">
                       {chat.unread}
                     </div>
                   )}
@@ -342,11 +342,11 @@ export default function MessagePage() {
           {/* Chat Area */}
           <div className="flex-1 flex flex-col">
             {/* Chat Header */}
-            <div className="p-4 border-b border-gray-200 bg-white">
+            <div className="p-3 sm:p-4 border-b border-gray-200 bg-white">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
-                    <div className="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center">
+                    <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-blue-600 text-white flex items-center justify-center">
                       {conversations.find(c => c.id === selectedChat)?.avatar}
                     </div>
                     <div className={`absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white ${
@@ -545,16 +545,16 @@ export default function MessagePage() {
             </div>
 
             {/* Message Input */}
-            <form onSubmit={handleSendMessage} className="p-4 bg-white border-t border-gray-200">
+            <form onSubmit={handleSendMessage} className="p-3 sm:p-4 bg-white border-t border-gray-200">
               {replyTo && (
-                <div className="mb-2 p-2 bg-gray-100 rounded flex justify-between items-center">
-                  <div className="text-sm">
+                <div className="mb-2 p-2 bg-gray-100 rounded flex justify-between items-start sm:items-center gap-2">
+                  <div className="text-xs sm:text-sm flex-1 min-w-0">
                     <div className="font-medium">Replying to {conversations.find(c => c.id === getReplyMessage(replyTo)?.senderId)?.name}</div>
-                    <div className="text-gray-600">{getReplyMessage(replyTo)?.text}</div>
+                    <div className="text-gray-600 truncate">{getReplyMessage(replyTo)?.text}</div>
                   </div>
                   <button
                     onClick={() => setReplyTo(null)}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-gray-400 hover:text-gray-600 flex-shrink-0"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -562,42 +562,42 @@ export default function MessagePage() {
                   </button>
                 </div>
               )}
-              <div className="flex space-x-4">
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                 <div className="flex-1 flex items-center space-x-2">
                   <input
                     type="text"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Type your message..."
-                    className="flex-1 rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="flex-1 rounded-lg border border-gray-300 px-3 sm:px-4 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
-                  <label className="cursor-pointer">
+                  <label className="cursor-pointer flex-shrink-0">
                     <input
                       type="file"
                       onChange={handleFileSelect}
                       className="hidden"
                     />
-                    <svg className="w-6 h-6 text-gray-500 hover:text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500 hover:text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                     </svg>
                   </label>
                 </div>
                 <button
                   type="submit"
-                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
                 >
                   Send
                 </button>
               </div>
               {selectedFile && (
-                <div className="mt-2 flex items-center space-x-2 text-sm text-gray-600">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="mt-2 flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                   </svg>
-                  <span>{selectedFile.name}</span>
+                  <span className="truncate">{selectedFile.name}</span>
                   <button
                     onClick={() => setSelectedFile(null)}
-                    className="text-red-500 hover:text-red-600"
+                    className="text-red-500 hover:text-red-600 flex-shrink-0"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -612,18 +612,18 @@ export default function MessagePage() {
 
       {/* Forward Message Modal */}
       {forwardingMessage && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-96">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg p-4 sm:p-6 w-full max-w-md">
             <h3 className="text-lg font-medium mb-4">Forward Message</h3>
             <div className="mb-4">
               <p className="text-sm text-gray-600">Select a chat to forward to:</p>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 max-h-60 overflow-y-auto">
               {conversations.map(chat => (
                 <button
                   key={chat.id}
                   onClick={() => handleForward(chat.id)}
-                  className="w-full p-2 text-left hover:bg-gray-100 rounded"
+                  className="w-full p-3 text-left hover:bg-gray-100 rounded-lg transition-colors"
                 >
                   {chat.name}
                 </button>
@@ -631,7 +631,7 @@ export default function MessagePage() {
             </div>
             <button
               onClick={() => setForwardingMessage(null)}
-              className="mt-4 w-full px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
+              className="mt-4 w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors"
             >
               Cancel
             </button>
@@ -641,10 +641,10 @@ export default function MessagePage() {
 
       {/* Profile Search Modal */}
       {showProfileSearch && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-[600px] max-h-[80vh] overflow-hidden flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg p-4 sm:p-6 w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-medium">Search Profiles</h3>
+              <h3 className="text-lg sm:text-xl font-medium">Search Profiles</h3>
               <button
                 onClick={() => {
                   setShowProfileSearch(false);
@@ -652,7 +652,7 @@ export default function MessagePage() {
                 }}
                 className="text-gray-500 hover:text-gray-700"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -664,44 +664,44 @@ export default function MessagePage() {
                 value={profileSearchQuery}
                 onChange={(e) => setProfileSearchQuery(e.target.value)}
                 placeholder="Search by name, role, or department..."
-                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
               />
-              <svg className="w-5 h-5 absolute right-3 top-2.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 absolute right-3 top-2.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
 
             <div className="overflow-y-auto flex-1">
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:gap-4">
                 {userProfiles.map(profile => (
                   <div
                     key={profile.id}
-                    className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer"
+                    className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 p-3 sm:p-4 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors"
                     onClick={() => handleStartChat(profile)}
                   >
-                    <div className="relative">
-                      <div className="h-12 w-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-lg font-medium">
+                    <div className="relative flex-shrink-0">
+                      <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm sm:text-lg font-medium">
                         {profile.avatar}
                       </div>
-                      <div className={`absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white ${
+                      <div className={`absolute bottom-0 right-0 h-2 w-2 sm:h-3 sm:w-3 rounded-full border-2 border-white ${
                         profile.isOnline ? 'bg-green-500' : 'bg-gray-400'
                       }`} />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between">
-                        <h4 className="text-lg font-medium text-gray-900">{profile.name}</h4>
-                        <span className="text-sm text-gray-500">{profile.isOnline ? 'Online' : 'Offline'}</span>
+                    <div className="flex-1 min-w-0 w-full sm:w-auto">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                        <h4 className="text-base sm:text-lg font-medium text-gray-900 truncate">{profile.name}</h4>
+                        <span className="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-0">{profile.isOnline ? 'Online' : 'Offline'}</span>
                       </div>
                       <p className="text-sm text-gray-600">{profile.role}</p>
                       <p className="text-sm text-gray-500">{profile.department}</p>
-                      <p className="text-sm text-gray-500 truncate">{profile.email}</p>
+                      <p className="text-xs sm:text-sm text-gray-500 truncate">{profile.email}</p>
                     </div>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         handleStartChat(profile);
                       }}
-                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      className="w-full sm:w-auto px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
                     >
                       Message
                     </button>

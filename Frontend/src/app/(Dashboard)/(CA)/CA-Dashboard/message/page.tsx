@@ -290,13 +290,13 @@ export default function MessagePage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Left Sidebar Navigation */}
-          <DashboardNav/>
+      <DashboardNav/>
 
       {/* Main Content Area */}
-      <div className="flex-1 ml-64">
-        <div className="flex h-screen">
+      <div className="flex-1 w-full lg:ml-0">
+        <div className="flex flex-col lg:flex-row h-screen">
           {/* Conversations Sidebar */}
-          <div className="w-80 bg-white border-r border-gray-200">
+          <div className="w-full lg:w-80 bg-white border-r border-gray-200 lg:h-screen">
             <div className="p-4 border-b border-gray-200">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-semibold text-gray-900">Messages</h2>

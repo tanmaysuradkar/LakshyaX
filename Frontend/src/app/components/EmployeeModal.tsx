@@ -76,10 +76,10 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4 sm:p-0">
+      <div className="relative w-full max-w-md sm:w-96 mx-auto p-5 border shadow-lg rounded-md bg-white">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-medium text-gray-900">
+          <h3 className="text-base sm:text-lg font-medium text-gray-900">
             {employee ? 'Edit Employee' : 'Add New Employee'}
           </h3>
           <button
@@ -92,9 +92,9 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
               Name
             </label>
             <input
@@ -104,12 +104,12 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
               required
               value={formData.name}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full px-3 py-2 sm:px-3 sm:py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm sm:text-base"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
               Email
             </label>
             <input
@@ -119,12 +119,12 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
               required
               value={formData.email}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full px-3 py-2 sm:px-3 sm:py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm sm:text-base"
             />
           </div>
 
           <div>
-            <label htmlFor="role" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="role" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
               Role
             </label>
             <input
@@ -134,12 +134,12 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
               required
               value={formData.role}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full px-3 py-2 sm:px-3 sm:py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm sm:text-base"
             />
           </div>
 
           <div>
-            <label htmlFor="department" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="department" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
               Department
             </label>
             <select
@@ -148,7 +148,7 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
               required
               value={formData.department}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full px-3 py-2 sm:px-3 sm:py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm sm:text-base"
             >
               <option value="">Select Department</option>
               <option value="Engineering">Engineering</option>
@@ -159,7 +159,7 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
           </div>
 
           <div>
-            <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="status" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
               Status
             </label>
             <select
@@ -168,7 +168,7 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
               required
               value={formData.status}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full px-3 py-2 sm:px-3 sm:py-2 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm sm:text-base"
             >
               <option value="Active">Active</option>
               <option value="On Leave">On Leave</option>
@@ -176,17 +176,17 @@ export default function EmployeeModal({ isOpen, onClose, onSave, employee }: Emp
             </select>
           </div>
 
-          <div className="flex justify-end gap-3 mt-6">
+          <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 sm:gap-3 mt-6">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="px-4 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="px-4 py-2 text-xs sm:text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               {employee ? 'Save Changes' : 'Add Employee'}
             </button>

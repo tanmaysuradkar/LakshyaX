@@ -50,21 +50,22 @@ export default function DashboardPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Left Sidebar Navigation */}
-      <DashboardNav/>
+      <DashboardNav />
+      
       {/* Main Content Area */}
-      <div className="flex-1 ml-64">
+      <div className="flex-1 w-full lg:ml-0">
         {/* Dashboard Header */}
-        <header className="bg-white shadow-sm">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex justify-between items-center">
-              <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-              <div className="flex items-center space-x-4">
+        <header className="bg-white shadow-sm sticky top-0 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex justify-between items-center flex-wrap gap-4">
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard</h1>
+              <div className="flex items-center space-x-2 sm:space-x-4">
                 <div className="relative">
                   <button
                     onClick={() => setShowNotifications(!showNotifications)}
-                    className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors relative"
+                    className="p-2 sm:px-4 sm:py-2 text-gray-600 hover:text-blue-600 transition-colors relative"
                   >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                     </svg>
                     <span className="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">
@@ -118,7 +119,7 @@ export default function DashboardPage() {
                     </div>
                   )}
                 </div>
-                <div className="h-8 w-8 rounded-full bg-blue-600 text-white flex items-center justify-center">
+                <div className="h-8 w-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">
                   JD
                 </div>
               </div>
@@ -127,16 +128,16 @@ export default function DashboardPage() {
         </header>
 
         {/* Main Dashboard Content */}
-        <div className="container mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Total Employees</p>
-                  <h3 className="text-2xl font-bold text-gray-900">24</h3>
+                  <p className="text-gray-500 text-xs sm:text-sm">Total Employees</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">24</h3>
                 </div>
-                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
@@ -144,13 +145,13 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Active Projects</p>
-                  <h3 className="text-2xl font-bold text-gray-900">12</h3>
+                  <p className="text-gray-500 text-xs sm:text-sm">Active Projects</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">12</h3>
                 </div>
-                <div className="h-12 w-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <div className="h-12 w-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                   </svg>
@@ -158,13 +159,13 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Tasks Completed</p>
-                  <h3 className="text-2xl font-bold text-gray-900">89%</h3>
+                  <p className="text-gray-500 text-xs sm:text-sm">Tasks Completed</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">89%</h3>
                 </div>
-                <div className="h-12 w-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <div className="h-12 w-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -172,13 +173,13 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Team Productivity</p>
-                  <h3 className="text-2xl font-bold text-gray-900">92%</h3>
+                  <p className="text-gray-500 text-xs sm:text-sm">Team Productivity</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">92%</h3>
                 </div>
-                <div className="h-12 w-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <div className="h-12 w-12 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
@@ -188,34 +189,34 @@ export default function DashboardPage() {
           </div>
 
           {/* Recent Activity */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
+          <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 mt-8">
+            <h2 className="text-lg sm:text-xl font-semibold mb-4">Recent Activity</h2>
             <div className="space-y-4">
-              <div className="flex items-center space-x-4">
-                <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                  <span className="text-blue-600 font-semibold">JD</span>
+              <div className="flex items-start space-x-3 sm:space-x-4 pb-4 border-b border-gray-100 last:border-b-0 last:pb-0">
+                <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-blue-600 font-semibold text-sm">JD</span>
                 </div>
-                <div>
-                  <p className="text-gray-900">John Doe completed the project setup</p>
-                  <p className="text-sm text-gray-500">2 hours ago</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
-                  <span className="text-green-600 font-semibold">AS</span>
-                </div>
-                <div>
-                  <p className="text-gray-900">Alice Smith added new team members</p>
-                  <p className="text-sm text-gray-500">4 hours ago</p>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm sm:text-base text-gray-900 break-words">John Doe completed the project setup</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">2 hours ago</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
-                  <span className="text-purple-600 font-semibold">RJ</span>
+              <div className="flex items-start space-x-3 sm:space-x-4 pb-4 border-b border-gray-100 last:border-b-0 last:pb-0">
+                <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-green-600 font-semibold text-sm">AS</span>
                 </div>
-                <div>
-                  <p className="text-gray-900">Robert Johnson updated project timeline</p>
-                  <p className="text-sm text-gray-500">1 day ago</p>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm sm:text-base text-gray-900 break-words">Alice Smith added new team members</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">4 hours ago</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-purple-600 font-semibold text-sm">RJ</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm sm:text-base text-gray-900 break-words">Robert Johnson updated project timeline</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">1 day ago</p>
                 </div>
               </div>
             </div>

@@ -135,7 +135,7 @@ export default function EmployeeList({
         <div className="p-4 flex justify-end">
           <button
             onClick={handleAddEmployee}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+            className="px-3 sm:px-4 py-2 text-xs sm:text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
           >
             Add Employee
           </button>
@@ -147,10 +147,10 @@ export default function EmployeeList({
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Employee
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" className="hidden sm:table-cell px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Role
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" className="hidden md:table-cell px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Department
                 </th>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -164,9 +164,9 @@ export default function EmployeeList({
             <tbody className="bg-white divide-y divide-gray-200">
               {sortedEmployees.map((employee, index) => (
                 <tr key={index} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="h-10 w-10 flex-shrink-0 relative">
+                      <div className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 relative">
                         <Image
                           className="rounded-full"
                           src={employee.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(employee.name)}`}
@@ -175,19 +175,19 @@ export default function EmployeeList({
                           sizes="40px"
                         />
                       </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">{employee.name}</div>
-                        <div className="text-sm text-gray-500">{employee.role}</div>
+                      <div className="ml-2 sm:ml-4">
+                        <div className="text-xs sm:text-sm font-medium text-gray-900">{employee.name}</div>
+                        <div className="hidden sm:block text-xs text-gray-500">{employee.role}</div>
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{employee.role}</div>
+                  <td className="hidden sm:table-cell px-4 sm:px-6 py-4 whitespace-nowrap">
+                    <div className="text-xs sm:text-sm text-gray-900">{employee.role}</div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{employee.department}</div>
+                  <td className="hidden md:table-cell px-4 sm:px-6 py-4 whitespace-nowrap">
+                    <div className="text-xs sm:text-sm text-gray-900">{employee.department}</div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                       employee.status === 'Active' ? 'bg-green-100 text-green-800' :
                       employee.status === 'On Leave' ? 'bg-yellow-100 text-yellow-800' :
@@ -196,8 +196,8 @@ export default function EmployeeList({
                       {employee.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <div className="flex items-center gap-2">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm font-medium">
+                    <div className="flex items-center gap-1 sm:gap-2">
                       <button
                         onClick={() => handleEditEmployee(employee)}
                         className="text-blue-600 hover:text-blue-900"

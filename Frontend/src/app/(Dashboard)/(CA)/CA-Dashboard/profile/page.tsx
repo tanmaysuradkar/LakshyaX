@@ -186,17 +186,17 @@ export default function ProfilePage() {
       <DashboardNav/>
 
       {/* Main Content Area */}
-      <div className="flex-1 ml-64">
+      <div className="flex-1 w-full lg:ml-0">
         {/* Profile Header */}
-        <header className="bg-white shadow-sm">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex justify-between items-center">
-              <h1 className="text-2xl font-bold text-gray-900">Profile</h1>
-              <div className="flex items-center space-x-4">
-                <div className="relative">
+        <header className="bg-white shadow-sm sticky top-0 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Profile</h1>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 w-full sm:w-auto">
+                <div className="relative w-full sm:w-auto">
                   <button 
                     onClick={() => setShowNotifications(!showNotifications)}
-                    className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors relative"
+                    className="px-3 sm:px-4 py-2 text-sm sm:text-base text-gray-600 hover:text-blue-600 transition-colors relative w-full sm:w-auto"
                   >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
@@ -287,15 +287,15 @@ export default function ProfilePage() {
         </header>
 
         {/* Profile Content */}
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Profile Info Card */}
-            <div className="md:col-span-1">
-              <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
                 <div className="flex flex-col items-center">
                   {isEditing ? (
                     <div className="relative mb-4">
-                      <div className="h-32 w-32 rounded-full bg-blue-600 text-white flex items-center justify-center text-4xl font-bold overflow-hidden">
+                      <div className="h-24 w-24 sm:h-32 sm:w-32 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl sm:text-4xl font-bold overflow-hidden">
                         {profileData.avatar.startsWith('data:') ? (
                           <Image
                             src={profileData.avatar}
@@ -384,17 +384,17 @@ export default function ProfilePage() {
                           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         />
                       </div>
-                      <div className="flex space-x-2">
+                      <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                         <button
                           type="submit"
-                          className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                          className="flex-1 px-3 sm:px-4 py-2 text-sm sm:text-base bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                         >
                           Save Changes
                         </button>
                         <button
                           type="button"
                           onClick={() => setIsEditing(false)}
-                          className="flex-1 px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition-colors"
+                          className="flex-1 px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition-colors"
                         >
                           Cancel
                         </button>
@@ -466,15 +466,15 @@ export default function ProfilePage() {
               </div>
 
               {/* Settings Section */}
-              <div className="bg-white rounded-xl shadow-sm p-6">
+              <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
                 <h3 className="text-lg font-semibold mb-4">Account Settings</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div>
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                    <div className="flex-1">
                       <p className="text-gray-900 font-medium">Email Notifications</p>
                       <p className="text-sm text-gray-500">Receive email updates about your account</p>
                     </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
+                    <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
                       <input 
                         type="checkbox" 
                         className="sr-only peer"
@@ -484,12 +484,12 @@ export default function ProfilePage() {
                       <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
                     </label>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                    <div className="flex-1">
                       <p className="text-gray-900 font-medium">Two-Factor Authentication</p>
                       <p className="text-sm text-gray-500">Add an extra layer of security to your account</p>
                     </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
+                    <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
                       <input 
                         type="checkbox" 
                         className="sr-only peer"
@@ -499,12 +499,12 @@ export default function ProfilePage() {
                       <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
                     </label>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                    <div className="flex-1">
                       <p className="text-gray-900 font-medium">Dark Mode</p>
                       <p className="text-sm text-gray-500">Switch between light and dark theme</p>
                     </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
+                    <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
                       <input 
                         type="checkbox" 
                         className="sr-only peer"

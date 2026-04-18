@@ -189,15 +189,15 @@ export default function ProjectsPage() {
       <DashboardNav/>
 
       {/* Main Content Area */}
-      <div className="flex-1 ml-64">
+      <div className="flex-1 w-full lg:ml-0">
         {/* Projects Header */}
-        <header className="bg-white shadow-sm">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex justify-between items-center">
-              <h1 className="text-2xl font-bold text-gray-900">Projects</h1>
+        <header className="bg-white shadow-sm sticky top-0 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Projects</h1>
               <button 
                 onClick={() => setShowCreateModal(true)}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="px-3 sm:px-4 py-2 text-sm sm:text-base bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full sm:w-auto"
               >
                 Create New Project
               </button>
@@ -206,45 +206,45 @@ export default function ProjectsPage() {
         </header>
 
         {/* Main Projects Content */}
-        <div className="container mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           {/* Project Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-gray-500 text-sm">Active Projects</p>
-                  <h3 className="text-2xl font-bold text-gray-900">{projectStats.active}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{projectStats.active}</h3>
                 </div>
-                <div className="h-12 w-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="h-10 w-10 sm:h-12 sm:w-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-gray-500 text-sm">In Progress</p>
-                  <h3 className="text-2xl font-bold text-gray-900">{projectStats.inProgress}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{projectStats.inProgress}</h3>
                 </div>
-                <div className="h-12 w-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="h-10 w-10 sm:h-12 sm:w-12 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-gray-500 text-sm">Completed</p>
-                  <h3 className="text-2xl font-bold text-gray-900">{projectStats.completed}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{projectStats.completed}</h3>
                 </div>
-                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="h-10 w-10 sm:h-12 sm:w-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -253,21 +253,21 @@ export default function ProjectsPage() {
           </div>
 
           {/* Projects List */}
-          <div className="bg-white text-black rounded-xl shadow-sm p-6">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold">All Projects</h2>
-              <div className="flex space-x-4">
+          <div className="bg-white text-black rounded-xl shadow-sm p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+              <h2 className="text-lg sm:text-xl font-semibold">All Projects</h2>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
                 <input
                   type="text"
                   placeholder="Search projects..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-auto"
                 />
                 <select 
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-auto"
                 >
                   <option value="all">All Status</option>
                   <option value="active">Active</option>
@@ -278,19 +278,19 @@ export default function ProjectsPage() {
             </div>
 
             {/* Project Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {filteredProjects.map(project => (
                 <div 
                   key={project.id} 
-                  className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer"
+                  className="border border-gray-200 rounded-lg p-4 sm:p-6 hover:shadow-lg transition-shadow cursor-pointer"
                   onClick={() => handleProjectClick(project)}
                 >
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-lg font-semibold">{project.title}</h3>
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-2 mb-4">
+                    <h3 className="text-base sm:text-lg font-semibold flex-1">{project.title}</h3>
                     <select
                       value={project.status}
                       onChange={(e) => handleStatusChange(project.id, e.target.value as Project['status'])}
-                      className={`px-3 py-1 rounded-full text-sm ${
+                      className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm w-full sm:w-auto ${
                         project.status === 'active' ? 'bg-green-100 text-green-600' :
                         project.status === 'in-progress' ? 'bg-yellow-100 text-yellow-600' :
                         'bg-blue-100 text-blue-600'
@@ -301,14 +301,14 @@ export default function ProjectsPage() {
                       <option value="completed">Completed</option>
                     </select>
                   </div>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center text-sm">
-                      <span className="text-gray-500 w-20">Role:</span>
+                  <p className="text-gray-600 mb-4 text-sm sm:text-base">{project.description}</p>
+                  <div className="space-y-2 sm:space-y-3 mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center text-sm gap-1 sm:gap-0">
+                      <span className="text-gray-500 w-full sm:w-20">Role:</span>
                       <span className="text-gray-900">{project.role}</span>
                     </div>
-                    <div className="flex items-center text-sm">
-                      <span className="text-gray-500 w-20">Assignee:</span>
+                    <div className="flex flex-col sm:flex-row sm:items-center text-sm gap-1 sm:gap-0">
+                      <span className="text-gray-500 w-full sm:w-20">Assignee:</span>
                       <span className="text-gray-900">{project.assignee}</span>
                     </div>
                   </div>
@@ -316,19 +316,19 @@ export default function ProjectsPage() {
                     <div className="text-sm text-gray-500 mb-2">Team Members</div>
                     <div className="flex -space-x-2">
                       {project.team.map((member, index) => (
-                        <div key={index} className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
-                          <span className="text-blue-600 text-sm">{member}</span>
+                        <div key={index} className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-blue-100 flex items-center justify-center">
+                          <span className="text-blue-600 text-xs sm:text-sm">{member}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                   <div className="mb-4">
                     <div className="text-sm text-gray-500 mb-2">Tags</div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {project.tags.map((tag, index) => (
                         <span
                           key={index}
-                          className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-sm"
+                          className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs sm:text-sm"
                         >
                           {tag}
                         </span>
@@ -336,7 +336,7 @@ export default function ProjectsPage() {
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="text-sm text-gray-500">{formatDueDate(project.dueDate)}</div>
+                    <div className="text-xs sm:text-sm text-gray-500">{formatDueDate(project.dueDate)}</div>
                   </div>
                 </div>
               ))}

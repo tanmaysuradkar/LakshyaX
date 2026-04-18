@@ -50,21 +50,22 @@ export default function DashboardPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Left Sidebar Navigation */}
-      <DashboardNav/>
+      <DashboardNav />
+      
       {/* Main Content Area */}
-      <div className="flex-1 ml-64">
+      <div className="flex-1 w-full lg:ml-0">
         {/* Dashboard Header */}
-        <header className="bg-white shadow-sm">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex justify-between items-center">
-              <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-              <div className="flex items-center space-x-4">
+        <header className="bg-white shadow-sm sticky top-0 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex justify-between items-center flex-wrap gap-4">
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard</h1>
+              <div className="flex items-center space-x-2 sm:space-x-4">
                 <div className="relative">
                   <button
                     onClick={() => setShowNotifications(!showNotifications)}
-                    className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors relative"
+                    className="p-2 sm:px-4 sm:py-2 text-gray-600 hover:text-blue-600 transition-colors relative"
                   >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                     </svg>
                     <span className="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">
@@ -73,9 +74,9 @@ export default function DashboardPage() {
                   </button>
 
                   {showNotifications && (
-                    <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg py-2 z-50">
+                    <div className="absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-lg shadow-lg py-2 z-50 max-w-[calc(100vw-1rem)]">
                       <div className="px-4 py-2 border-b border-gray-200">
-                        <h3 className="text-lg font-semibold text-gray-900">Notifications</h3>
+                        <h3 className="text-sm sm:text-lg font-semibold text-gray-900">Notifications</h3>
                       </div>
                       <div className="max-h-96 overflow-y-auto">
                         {notifications.map(notification => (

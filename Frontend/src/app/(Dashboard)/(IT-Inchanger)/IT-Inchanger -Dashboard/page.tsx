@@ -50,11 +50,12 @@ export default function DashboardPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Left Sidebar Navigation */}
-      <DashboardNav/>
+      <DashboardNav />
+      
       {/* Main Content Area */}
-      <div className="flex-1 ml-64">
+      <div className="flex-1 w-full lg:ml-0">
         {/* Dashboard Header */}
-        <header className="bg-white shadow-sm">
+        <header className="bg-white shadow-sm sticky top-0 z-20">
           <div className="container mx-auto px-4 py-4">
             <div className="flex justify-between items-center">
               <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>

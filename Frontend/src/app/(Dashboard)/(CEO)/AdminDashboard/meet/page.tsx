@@ -293,44 +293,44 @@ export default function MessagePage() {
           <DashboardNav/>
 
       {/* Main Content Area */}
-      <div className="flex-1 ml-64">
-        <div className="flex h-screen">
+      <div className="flex-1 w-full lg:ml-0">
+        <div className="flex flex-col lg:flex-row h-screen">
           {/* Conversations Sidebar */}
-          <div className="w-80 bg-white border-r border-gray-200">
+          <div className="w-full lg:w-80 bg-white border-r border-gray-200 lg:h-screen">
             <div className="p-4 border-b border-gray-200">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-900">Messages</h2>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Messages</h2>
                 <button
                   onClick={() => setShowProfileSearch(true)}
                   className="p-2 text-gray-500 hover:text-blue-600 rounded-full hover:bg-gray-100"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                   </svg>
                 </button>
               </div>
             </div>
-            <div className="overflow-y-auto h-[calc(100vh-4rem)]">
+            <div className="overflow-y-auto h-[calc(100vh-4rem)] lg:h-[calc(100vh-8rem)]">
               {conversations.map(chat => (
                 <button
                   key={chat.id}
                   onClick={() => setSelectedChat(chat.id)}
-                  className={`w-full p-4 flex items-center space-x-3 hover:bg-gray-50 transition-colors ${
+                  className={`w-full p-3 sm:p-4 flex items-center space-x-3 hover:bg-gray-50 transition-colors ${
                     selectedChat === chat.id ? 'bg-blue-50' : ''
                   }`}
                 >
-                  <div className="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center">
-                    {chat.avatar}
+                  <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0">
+                    <span className="text-xs sm:text-sm">{chat.avatar}</span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-center">
                       <h3 className="text-sm font-medium text-gray-900 truncate">{chat.name}</h3>
                       <span className="text-xs text-gray-500">{chat.time}</span>
                     </div>
-                    <p className="text-sm text-gray-500 truncate">{chat.lastMessage}</p>
+                    <p className="text-xs sm:text-sm text-gray-500 truncate">{chat.lastMessage}</p>
                   </div>
                   {chat.unread > 0 && (
-                    <div className="h-5 w-5 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center">
+                    <div className="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center flex-shrink-0">
                       {chat.unread}
                     </div>
                   )}
@@ -342,11 +342,11 @@ export default function MessagePage() {
           {/* Chat Area */}
           <div className="flex-1 flex flex-col">
             {/* Chat Header */}
-            <div className="p-4 border-b border-gray-200 bg-white">
+            <div className="p-3 sm:p-4 border-b border-gray-200 bg-white">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
-                    <div className="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center">
+                    <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-blue-600 text-white flex items-center justify-center">
                       {conversations.find(c => c.id === selectedChat)?.avatar}
                     </div>
                     <div className={`absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white ${

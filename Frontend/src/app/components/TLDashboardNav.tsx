@@ -5,30 +5,50 @@ import React, { useEffect, useState } from "react";
 const DashboardNav = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
   const [data, setdata] = useState({
     id: "",
     username: "",
     email: "",
     isVerified: "",
   });
+  
   const handleNavigation = (path: string) => {
     router.push(path);
+    setIsOpen(false);
   };
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.post("/api/user/me");
-//         console.log("Dashboard data:", response.data);
-//         console.log("First name:", response.data.user);
-//         setdata(response.data.user);
-//       } catch (error) {
-//         console.error("Error fetching dashboard data:", error);
-//       }
-//     };
-//     fetchData();
-//   }, []);
+  
+  const closeMenu = () => setIsOpen(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
-    <aside className="w-64 bg-white shadow-sm h-screen fixed left-0 top-0">
+    <>
+      {/* Mobile Toggle Button */}
+      <button
+        onClick={toggleMenu}
+        className="lg:hidden fixed top-20 left-4 z-50 p-2 rounded-md bg-white shadow-md hover:bg-gray-100"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {isOpen ? (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          )}
+        </svg>
+      </button>
+
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div
+          className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50"
+          onClick={closeMenu}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside className={`w-64 bg-white shadow-sm h-screen fixed left-0 top-0 z-40 transform transition-transform duration-300 lg:translate-x-0 lg:relative lg:z-10 ${
+        isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+      }`}>
       <div className="p-4">
         <h2 className="text-xl font-bold text-blue-600 mb-8">LakshyaX</h2>
         <nav className="space-y-2">
@@ -306,6 +326,7 @@ const DashboardNav = () => {
         </nav>
       </div>
     </aside>
+    </>
   );
 };
 
