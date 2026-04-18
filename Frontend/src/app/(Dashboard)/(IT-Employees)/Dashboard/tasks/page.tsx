@@ -134,7 +134,7 @@ export default function TasksPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex text-black min-h-screen bg-gray-50">
       {/* Left Sidebar Navigation */}
       <DashboardNav/>
 
